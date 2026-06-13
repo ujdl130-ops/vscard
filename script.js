@@ -1,5 +1,6 @@
 const copyPhoneButton = document.getElementById('copyPhoneButton');
 const copyEmailButton = document.getElementById('copyEmailButton');
+const githubButton = document.getElementById('githubButton');
 const phoneText = document.getElementById('phoneText');
 const emailText = document.getElementById('emailText');
 const notice = document.getElementById('notice');
@@ -45,6 +46,12 @@ if (copyEmailButton && emailText) {
       '이메일이 복사되었습니다.',
       '복사에 실패했습니다. 이메일을 직접 선택해서 복사해주세요.'
     );
+  });
+}
+
+if (githubButton) {
+  githubButton.addEventListener('click', () => {
+    showNotice('Github 페이지로 이동합니다.');
   });
 }
 

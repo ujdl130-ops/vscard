@@ -3,26 +3,61 @@ const copyEmailButton = document.getElementById('copyEmailButton');
 const phoneText = document.getElementById('phoneText');
 const emailText = document.getElementById('emailText');
 const notice = document.getElementById('notice');
+const businessCard = document.querySelector('.business-card');
 
+function showNotice(message) {
+  if (!notice) return;
+  notice.textContent = message;
+}
 
-copyPhoneButton.addEventListener('click', async () => {
-  const phoneNumber = phoneText.textContent.trim();
+async function copyText(text, successMessage, failMessage) {
+  if (!text) {
+    showNotice('복사할 내용이 없습니다.');
+    return;
+  }
 
   try {
-    await navigator.clipboard.writeText(phoneNumber);
-    notice.textContent = '전화번호가 복사되었습니다.';
+    await navigator.clipboard.writeText(text);
+    showNotice(successMessage);
   } catch (error) {
-    notice.textContent = '복사에 실패했습니다. 번호를 직접 선택해서 복사해주세요.';
+    showNotice(failMessage);
   }
-});
+}
 
-copyEmailButton.addEventListener('click', async () => {
-  const email = emailText.textContent.trim();
+if (copyPhoneButton && phoneText) {
+  copyPhoneButton.addEventListener('click', () => {
+    const phoneNumber = phoneText.textContent.trim();
 
-  try {
-    await navigator.clipboard.writeText(email);
-    notice.textContent = '이메일이 복사되었습니다.';
-  } catch (error) {
-    notice.textContent = '복사에 실패했습니다. 이메일을 직접 선택해서 복사해주세요.';
-  }
-});
+    copyText(
+      phoneNumber,
+      '전화번호가 복사되었습니다.',
+      '복사에 실패했습니다. 번호를 직접 선택해서 복사해주세요.'
+    );
+  });
+}
+
+if (copyEmailButton && emailText) {
+  copyEmailButton.addEventListener('click', () => {
+    const email = emailText.textContent.trim();
+
+    copyText(
+      email,
+      '이메일이 복사되었습니다.',
+      '복사에 실패했습니다. 이메일을 직접 선택해서 복사해주세요.'
+    );
+  });
+}
+
+if (businessCard) {
+  businessCard.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
+
+  businessCard.addEventListener('mouseenter', () => {
+    businessCard.style.transform = 'translateY(-12px)';
+    businessCard.style.boxShadow = '0 34px 90px rgba(194, 155, 237, 0.28)';
+  });
+
+  businessCard.addEventListener('mouseleave', () => {
+    businessCard.style.transform = 'translateY(0)';
+    businessCard.style.boxShadow = '';
+  });
+}

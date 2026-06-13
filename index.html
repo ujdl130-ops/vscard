@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>박병훈 | 게임기획자 웹명함</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="business-card" aria-label="박병훈 웹명함 카드">
+    <section class="profile-area">
+      <!-- 기본 프로필 이미지는 아래 img 태그의 src 링크로 설정되어 있습니다. 다른 이미지로 바꾸려면 src 값을 교체하면 됩니다. -->
+      <img
+        id="profilePreview"
+        class="profile-image"
+        src="https://wallpapers.com/images/hd/cute-fox-pictures-xd2hv9o5kqw6qman.jpg"
+        alt="프로필 이미지"
+      />
+    </section>
+
+    <h1 class="name">박병훈</h1>
+    <p class="role">게임기획자</p>
+
+    <p class="intro">
+      플레이 경험을 구조화하고, 명확한 규칙과 흐름으로 정리하는 게임기획자를 지향합니다.
+    </p>
+
+    <div class="divider"></div>
+
+    <section class="info-list" aria-label="연락처 정보">
+      <div class="info-item">
+        <span class="info-label">Name</span>
+        <span class="info-value">박병훈</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Position</span>
+        <span class="info-value">게임기획자</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Phone</span>
+        <span id="phoneText" class="info-value">010-7152-7584</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Email</span>
+        <span id="emailText" class="info-value">ujdl130@naver.com</span>
+      </div>
+    </section>
+
+    <div class="button-row">
+      <a class="button primary" href="tel:010-7152-7584">전화 걸기</a>
+      <button id="copyPhoneButton" class="button secondary" type="button">번호 복사</button>
+      <a class="button primary" href="mailto:ujdl130@naver.com">이메일 보내기</a>
+      <button id="copyEmailButton" class="button secondary" type="button">이메일 복사</button>
+    </div>
+
+    <p id="notice" class="notice" aria-live="polite"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

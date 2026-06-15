@@ -8,63 +8,170 @@
 </head>
 <body>
   <main class="business-card" aria-label="박병훈 웹명함 카드">
-    <section class="profile-area">
-      <!-- 기본 프로필 이미지는 아래 img 태그의 src 링크로 설정되어 있습니다. 다른 이미지로 바꾸려면 src 값을 교체하면 됩니다. -->
-      <img
-        id="profilePreview"
-        class="profile-image"
-        src="https://wallpapers.com/images/hd/cute-fox-pictures-xd2hv9o5kqw6qman.jpg"
-        alt="프로필 이미지"
-      />
-    </section>
+    <div class="card-rotator" id="cardRotator">
+      <!-- 앞면: 기존 웹명함 기능 영역 -->
+      <section class="card-face card-front" aria-label="웹명함 앞면">
+        <section class="profile-area">
+          <!-- 기본 프로필 이미지는 아래 img 태그의 src 링크로 설정되어 있습니다. 다른 이미지로 바꾸려면 src 값을 교체하면 됩니다. -->
+          <img
+            id="profilePreview"
+            class="profile-image"
+            src="https://wallpapers.com/images/hd/cute-fox-pictures-xd2hv9o5kqw6qman.jpg"
+            alt="프로필 이미지"
+          />
+        </section>
 
-    <h1 class="name">박병훈</h1>
-    <p class="role">게임기획자</p>
+        <h1 class="name">박병훈</h1>
+        <p class="role">게임기획자</p>
 
-    <p class="intro">
-      플레이 경험을 구조화하고, 명확한 규칙과 흐름으로 정리하는 게임기획자를 지향합니다.
-    </p>
+        <p class="intro">
+          플레이 경험을 구조화하고, 명확한 규칙과 흐름으로 정리하는 게임기획자를 지향합니다.
+        </p>
 
-    <div class="divider"></div>
+        <div class="divider"></div>
 
-    <section class="info-list" aria-label="연락처 정보">
-      <div class="info-item">
-        <span class="info-label">Name</span>
-        <span class="info-value">박병훈</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Position</span>
-        <span class="info-value">게임기획자</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Phone</span>
-        <span id="phoneText" class="info-value">010-7152-7584</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Email</span>
-        <span id="emailText" class="info-value">ujdl130@naver.com</span>
-      </div>
-    </section>
+        <section class="info-list" aria-label="연락처 정보">
+          <div class="info-item">
+            <span class="info-label">Name</span>
+            <span class="info-value">박병훈</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Position</span>
+            <span class="info-value">게임기획자</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Phone</span>
+            <span id="phoneText" class="info-value">010-7152-7584</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Email</span>
+            <span id="emailText" class="info-value">ujdl130@naver.com</span>
+          </div>
+        </section>
 
-    <a
-      id="githubButton"
-      class="github-button"
-      href="https://github.com/ujdl130-ops"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="박병훈 Github 페이지 새 창으로 열기"
-    >
-      ⭐ Github보기
-    </a>
+        <a
+          id="githubButton"
+          class="github-button"
+          href="https://github.com/ujdl130-ops"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="박병훈 Github 페이지 새 창으로 열기"
+        >
+          ⭐ Github보기
+        </a>
 
-    <div class="button-row">
-      <a class="button primary" href="tel:010-7152-7584">전화 걸기</a>
-      <button id="copyPhoneButton" class="button secondary" type="button">번호 복사</button>
-      <a class="button primary" href="mailto:ujdl130@naver.com">이메일 보내기</a>
-      <button id="copyEmailButton" class="button secondary" type="button">이메일 복사</button>
+        <div class="button-row">
+          <a class="button primary" href="tel:010-7152-7584">전화 걸기</a>
+          <button id="copyPhoneButton" class="button secondary" type="button">번호 복사</button>
+          <a class="button primary" href="mailto:ujdl130@naver.com">이메일 보내기</a>
+          <button id="copyEmailButton" class="button secondary" type="button">이메일 복사</button>
+        </div>
+
+        <p id="notice" class="notice" aria-live="polite"></p>
+
+        <button id="showBackButton" class="button secondary flip-control" type="button">
+          뒷면 보기
+        </button>
+      </section>
+
+      <!-- 뒷면: 포트폴리오 소개 영역 -->
+      <section class="card-face card-back" aria-label="웹명함 뒷면 포트폴리오 소개">
+        <p class="role back-role">Portfolio Side</p>
+        <h2 class="back-title">About My Game Taste</h2>
+
+        <div class="back-content">
+          <article class="content-block">
+            <h3>가장 인상깊었던 게임</h3>
+            <p class="game-title">젤다의 전설: 야생의 숨결</p>
+            <p>
+              시간의 흐름을 잊게 만드는 높은 몰입감과 자유로운 탐험 구조가 매력적이었습니다.
+            </p>
+          </article>
+
+          <article class="content-block">
+            <h3>최근 재미있게 했던 게임</h3>
+            <p class="game-title">명조: 워더링 웨이브</p>
+            <p>
+              점점 깊어지는 스토리와 최근 사이버펑크 컬래버레이션을 훌륭하게 마무리한 점이 인상깊었습니다.
+            </p>
+          </article>
+
+          <article class="content-block">
+            <h3>되고 싶은 기획자</h3>
+            <p>
+              게임을 사람을 연결하고 위로하는 예술로 바라보며, 유저가 함께 공감할 수 있는 세계를 설계하는 기획자가 되고 싶습니다.
+            </p>
+          </article>
+        </div>
+
+        <p class="planning-guide">
+          주요 기획서 아이콘에 마우스를 올리면 간단한 기획 의도를 확인할 수 있습니다.
+        </p>
+
+        <div class="planning-link-row" aria-label="기획서 바로가기">
+          <div class="planning-link-item">
+            <a
+              class="circle-plan-button"
+              href="https://www.notion.so/1eaa2b1bc58d807fa8ddc74ca4357a3c?source=copy_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="언더다크 디펜스 창작기획서 새 창으로 열기"
+              title="언더다크 디펜스 창작기획서"
+            >
+              <span class="circle-icon" aria-hidden="true">🛡️</span>
+              <span class="circle-text">언더다크</span>
+            </a>
+
+            <div class="plan-tooltip tooltip-left" role="tooltip">
+              <h4>언더다크 디펜스</h4>
+              <strong>콘텐츠 기획의도</strong>
+              <p>
+                이모티콘 소통과 디버프 카드를 활용한 상호작용형 PvP를 설계했습니다.
+                솔로 플레이의 한계를 보완하고, ‘사람’이 주는 생동감 있는 재미를 더했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="planning-link-item">
+            <a
+              class="circle-plan-button"
+              href="https://www.notion.so/2d0a2b1bc58d80889d6aedf328ca51fa?source=copy_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="젠레스 존 제로 시유방어전 역기획서 새 창으로 열기"
+              title="젠레스 존 제로 시유방어전 역기획서"
+            >
+              <span class="circle-icon" aria-hidden="true">⚡</span>
+              <span class="circle-text">시유방어전</span>
+            </a>
+
+            <div class="plan-tooltip tooltip-right" role="tooltip">
+              <h4>젠레스 존 제로: 시유방어전</h4>
+              <strong>엔드 콘텐츠 역기획</strong>
+              <p>
+                메인 스토리 이후 누적 성장 폭을 점검하는 주기 갱신형 엔드 콘텐츠입니다.
+                2파티 편성으로 캐릭터 의존을 줄이고, 자원 분배와 계정 단위 전투 운용 능력을 검증합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 보기 버튼은 미리캔버스 포트폴리오 링크로 연결되어 있습니다. -->
+        <a
+          class="portfolio-button"
+          href="https://www.miricanvas.com/login?redirect=%2Fv2%2Fko%2Fdesign2%2Fb221ba78-657a-4036-ae11-db7b0be92bfc%3Flocation%3Ddesign%26type%3Dcopy_link%26access%3Dlink%26permission%3Dviewer"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="박병훈 포트폴리오 새 창으로 열기"
+        >
+          포트폴리오 보기
+        </a>
+
+        <button id="showFrontButton" class="button secondary flip-control" type="button">
+          앞면 보기
+        </button>
+      </section>
     </div>
-
-    <p id="notice" class="notice" aria-live="polite"></p>
   </main>
 
   <script src="script.js"></script>

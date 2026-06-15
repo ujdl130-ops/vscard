@@ -36,10 +36,11 @@ body {
   border: 1px solid #c29bed;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 34px 30px 28px;
+  padding: 0;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  perspective: 1200px;
 }
 
 .business-card::before {
@@ -48,6 +49,46 @@ body {
   inset: 0 0 auto 0;
   height: 8px;
   background: linear-gradient(90deg, #352047, var(--point), #352047);
+  z-index: 3;
+}
+
+.card-rotator {
+  display: grid;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.card-rotator.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  grid-area: 1 / 1;
+  width: 100%;
+  min-height: 100%;
+  padding: 34px 30px 28px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-front {
+  pointer-events: auto;
+}
+
+.card-back {
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+.card-rotator.is-flipped .card-front {
+  pointer-events: none;
+}
+
+.card-rotator.is-flipped .card-back {
+  pointer-events: auto;
 }
 
 .profile-area {
@@ -163,7 +204,9 @@ body {
 }
 
 .github-button:focus-visible,
-.button:focus-visible {
+.button:focus-visible,
+.circle-plan-button:focus-visible,
+.portfolio-button:focus-visible {
   outline: 3px solid rgba(194, 155, 237, 0.65);
   outline-offset: 3px;
 }
@@ -211,9 +254,234 @@ body {
   font-weight: 700;
 }
 
+.flip-control {
+  width: 100%;
+  margin-top: 12px;
+  min-height: 48px;
+}
+
+.back-role {
+  margin: 10px auto 18px;
+}
+
+.back-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.back-content {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+  text-align: left;
+}
+
+.content-block {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.content-block h3 {
+  margin-bottom: 8px;
+  color: var(--point);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.content-block p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.game-title {
+  margin-bottom: 4px;
+  color: var(--text) !important;
+  font-weight: 900;
+}
+
+.planning-link-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  margin: auto 0 18px;
+  padding-top: 22px;
+}
+
+.circle-plan-button {
+  width: 84px;
+  height: 84px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgba(194, 155, 237, 0.7);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.16), transparent 46%),
+    linear-gradient(145deg, rgba(194, 155, 237, 0.28), rgba(255, 255, 255, 0.05));
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(194, 155, 237, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+}
+
+.circle-plan-button:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--point);
+  box-shadow: 0 18px 36px rgba(194, 155, 237, 0.24);
+  filter: brightness(1.1);
+}
+
+.circle-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.circle-text {
+  max-width: 66px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  word-break: keep-all;
+}
+
+
+.planning-guide {
+  max-width: 320px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.planning-link-item {
+  position: relative;
+  display: inline-flex;
+}
+
+.plan-tooltip {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 270px;
+  padding: 16px 17px;
+  border: 1px solid rgba(194, 155, 237, 0.72);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top left, rgba(194, 155, 237, 0.22), transparent 42%),
+    rgba(18, 14, 27, 0.96);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35), 0 0 28px rgba(194, 155, 237, 0.12);
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.96);
+  transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
+}
+
+.plan-tooltip h4 {
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.plan-tooltip strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--point);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.plan-tooltip p {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.tooltip-left {
+  right: calc(100% + 160px);
+}
+
+.tooltip-right {
+  left: calc(100% + 160px);
+}
+
+.tooltip-left::after,
+.tooltip-right::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(194, 155, 237, 0.8), transparent);
+}
+
+.tooltip-left::after {
+  left: 100%;
+  transform: translateY(-50%);
+}
+
+.tooltip-right::after {
+  right: 100%;
+  transform: translateY(-50%);
+}
+
+.planning-link-item:hover .plan-tooltip,
+.planning-link-item:focus-within .plan-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+}
+
+.portfolio-button {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(194, 155, 237, 0.6);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(194, 155, 237, 0.3), rgba(255, 255, 255, 0.06));
+  color: #f5f0ff;
+  font-size: 15px;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+}
+
+.portfolio-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--point);
+  box-shadow: 0 14px 32px rgba(194, 155, 237, 0.2);
+  filter: brightness(1.08);
+}
+
 @media (max-width: 420px) {
-  .business-card {
+  .card-face {
     padding: 30px 22px 24px;
+    border-radius: 24px;
+  }
+
+  .business-card {
     border-radius: 24px;
   }
 
@@ -233,5 +501,39 @@ body {
 
   .info-value {
     text-align: left;
+  }
+
+  .back-title {
+    font-size: 23px;
+  }
+
+  .planning-link-row {
+    gap: 18px;
+    margin-bottom: 16px;
+    padding-top: 18px;
+  }
+
+  .circle-plan-button {
+    width: 76px;
+    height: 76px;
+  }
+
+  .circle-icon {
+    font-size: 22px;
+  }
+
+  .circle-text {
+    max-width: 58px;
+    font-size: 10px;
+  }
+
+  .planning-guide {
+    max-width: 280px;
+    margin-top: 16px;
+    font-size: 12px;
+  }
+
+  .plan-tooltip {
+    display: none;
   }
 }

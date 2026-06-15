@@ -5,6 +5,9 @@ const phoneText = document.getElementById('phoneText');
 const emailText = document.getElementById('emailText');
 const notice = document.getElementById('notice');
 const businessCard = document.querySelector('.business-card');
+const cardRotator = document.getElementById('cardRotator');
+const showBackButton = document.getElementById('showBackButton');
+const showFrontButton = document.getElementById('showFrontButton');
 
 function showNotice(message) {
   if (!notice) return;
@@ -52,6 +55,18 @@ if (copyEmailButton && emailText) {
 if (githubButton) {
   githubButton.addEventListener('click', () => {
     showNotice('Github 페이지로 이동합니다.');
+  });
+}
+
+if (showBackButton && cardRotator) {
+  showBackButton.addEventListener('click', () => {
+    cardRotator.classList.add('is-flipped');
+  });
+}
+
+if (showFrontButton && cardRotator) {
+  showFrontButton.addEventListener('click', () => {
+    cardRotator.classList.remove('is-flipped');
   });
 }
 

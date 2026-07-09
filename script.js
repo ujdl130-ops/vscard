@@ -8,6 +8,7 @@ const businessCard = document.querySelector('.business-card');
 const cardRotator = document.getElementById('cardRotator');
 const showBackButton = document.getElementById('showBackButton');
 const showFrontButton = document.getElementById('showFrontButton');
+const lastPrayerLink = document.getElementById('lastPrayerLink');
 
 function showNotice(message) {
   if (!notice) return;
@@ -67,6 +68,13 @@ if (showBackButton && cardRotator) {
 if (showFrontButton && cardRotator) {
   showFrontButton.addEventListener('click', () => {
     cardRotator.classList.remove('is-flipped');
+  });
+}
+
+if (lastPrayerLink) {
+  lastPrayerLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.href = lastPrayerLink.href;
   });
 }
 

@@ -309,7 +309,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 26px;
+  gap: 30px;
   margin: auto 0 18px;
   padding-top: 22px;
 }
@@ -328,7 +328,11 @@ body {
     radial-gradient(circle at top, rgba(255, 255, 255, 0.16), transparent 46%),
     linear-gradient(145deg, rgba(194, 155, 237, 0.28), rgba(255, 255, 255, 0.05));
   color: var(--text);
+  font-family: inherit;
   text-decoration: none;
+  appearance: none;
+  padding: 0;
+  cursor: pointer;
   box-shadow: 0 12px 28px rgba(194, 155, 237, 0.14);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
 }
@@ -353,6 +357,19 @@ body {
   line-height: 1.15;
   text-align: center;
   word-break: keep-all;
+}
+
+.circle-text-long {
+  max-width: 72px;
+  font-size: 9.5px;
+  text-transform: lowercase;
+}
+
+.circle-text small {
+  display: block;
+  margin-top: 2px;
+  font-size: 9px;
+  line-height: 1.1;
 }
 
 
@@ -423,6 +440,12 @@ body {
   left: calc(100% + 160px);
 }
 
+.tooltip-center {
+  top: calc(100% + 18px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.96);
+}
+
 .tooltip-left::after,
 .tooltip-right::after {
   content: "";
@@ -448,6 +471,11 @@ body {
   opacity: 1;
   visibility: visible;
   transform: translateY(-50%) scale(1);
+}
+
+.planning-link-item:hover .tooltip-center,
+.planning-link-item:focus-within .tooltip-center {
+  transform: translateX(-50%) scale(1);
 }
 
 .portfolio-button {
@@ -508,7 +536,7 @@ body {
   }
 
   .planning-link-row {
-    gap: 18px;
+    gap: 16px;
     margin-bottom: 16px;
     padding-top: 18px;
   }
@@ -525,6 +553,15 @@ body {
   .circle-text {
     max-width: 58px;
     font-size: 10px;
+  }
+
+  .circle-text-long {
+    max-width: 62px;
+    font-size: 8.5px;
+  }
+
+  .circle-text small {
+    font-size: 8px;
   }
 
   .planning-guide {
